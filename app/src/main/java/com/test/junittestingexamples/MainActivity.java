@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        clinicCalendar = new ClinicCalendar();
+        clinicCalendar = new ClinicCalendar(LocalDate.now());
         lastName = findViewById(R.id.lastName);
         firstName = findViewById(R.id.firstName);
         dateTime = findViewById(R.id.dateTime);

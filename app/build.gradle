@@ -21,6 +21,10 @@ android {
             useJUnitPlatform()
         }
     }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
 }
 apply plugin: 'de.mannodermaus.android-junit5'
 dependencies {
