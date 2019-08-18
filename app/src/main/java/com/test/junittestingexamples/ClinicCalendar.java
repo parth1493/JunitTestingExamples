@@ -31,32 +31,11 @@ ClinicCalendar
     {
         Doctor doc = Doctor.valueOf(doctorKey.toLowerCase());
         LocalDateTime localDateTime;
-        localDateTime = convertToDateTimeFromString(dateTime);
+        localDateTime = DateTimeConverter.convertToDateTimeFromString(dateTime,LocalDate.now());
         PatientAppointment appointment = new PatientAppointment(patientFirstName,patientLastName,localDateTime,doc);
         appointments.add(appointment);
     }
 
-    private LocalDateTime convertToDateTimeFromString(String dateTime) {
-        LocalDateTime localDateTime;
-        try
-        {
-            if(dateTime.toUpperCase().startsWith("today"))
-            {
-                String[] parts = dateTime.split(" ",2);
-                LocalTime time = LocalTime.parse(parts[1].toUpperCase(), DateTimeFormatter.ofPattern("h:mm a", Locale.US));
-                localDateTime = LocalDateTime.of(today,time);
-            }
-            else {
-                localDateTime = LocalDateTime.parse(dateTime.toUpperCase(), DateTimeFormatter.ofPattern("M/d/yyyy h:mm a", Locale.US));
-            }
-        }
-        catch (Throwable t)
-        {
-            throw  new RuntimeException("Unable to create date tine from ["+
-                     dateTime.toUpperCase() + "], please enter with formant [M/d/yyyy h:mm a]");
-        }
-        return localDateTime;
-    }
 
     public List<PatientAppointment>
     getAppointments()
