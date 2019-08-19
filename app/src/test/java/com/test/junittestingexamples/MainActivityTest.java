@@ -5,6 +5,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -29,6 +30,7 @@ class MainActivityTest
         clinicCalendar = new ClinicCalendar(LocalDate.of(2019,8,18));
     }
     @Test
+    @Tag("DateTime")
     public void
     allowEntryofAnyAppointment()
     {
@@ -38,8 +40,8 @@ class MainActivityTest
         assertNotNull(appointments);
         assertAll(
         ()->assertEquals(1,appointments.size()),
-        ()-> assertEquals("Parth1",appointments.get(0).getPatientFirstName()),
-        ()-> assertEquals("Desaiq",appointments.get(0).getPatientLastName()),
+        ()-> assertEquals("Parth",appointments.get(0).getPatientFirstName()),
+        ()-> assertEquals("Desai",appointments.get(0).getPatientLastName()),
         ()-> assertSame(Doctor.avery,appointments.get(0).getDoctor()),
         ()->  assertEquals("9/1/1990 02:00 PM",appointments.get(0).getAppointmentDateTime().format(DateTimeFormatter.ofPattern("M/d/yyyy hh:mm a")))
         );
@@ -56,6 +58,7 @@ class MainActivityTest
     }
 
     @Test
+    @Tag("DateTime")
     public void
     returnFalseForHasAppointmentsIfThereAreAppointments()
     {
