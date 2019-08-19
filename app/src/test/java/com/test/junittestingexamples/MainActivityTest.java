@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -35,15 +36,17 @@ class MainActivityTest
         clinicCalendar.addAppointment("Parth","Desai","avery","9/1/1990 2:00 pm");
         List<PatientAppointment> appointments = clinicCalendar.getAppointments();
         assertNotNull(appointments);
-        assertEquals(1,appointments.size());
-        assertEquals("Parth",appointments.get(0).getPatientFirstName());
-        assertEquals("Desai",appointments.get(0).getPatientLastName());
-        assertEquals(Doctor.avery,appointments.get(0).getDoctor());
-        assertSame(Doctor.avery,appointments.get(0).getDoctor());
-        assertEquals("9/1/1990 02:00 PM",appointments.get(0).getAppointmentDateTime().format(DateTimeFormatter.ofPattern("M/d/yyyy hh:mm a")));
+        assertAll(
+        ()->assertEquals(1,appointments.size()),
+        ()-> assertEquals("Parth1",appointments.get(0).getPatientFirstName()),
+        ()-> assertEquals("Desaiq",appointments.get(0).getPatientLastName()),
+        ()-> assertSame(Doctor.avery,appointments.get(0).getDoctor()),
+        ()->  assertEquals("9/1/1990 02:00 PM",appointments.get(0).getAppointmentDateTime().format(DateTimeFormatter.ofPattern("M/d/yyyy hh:mm a")))
+        );
     }
 
     @Test
+    @Disabled
     public void
     returnTrueForHasAppointmentsIfThereAreAppointments()
     {
