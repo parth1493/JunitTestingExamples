@@ -31,7 +31,7 @@ ClinicCalendar
     {
         Doctor doc = Doctor.valueOf(doctorKey.toLowerCase());
         LocalDateTime localDateTime;
-        localDateTime = DateTimeConverter.convertToDateTimeFromString(dateTime,LocalDate.now());
+        localDateTime = DateTimeConverter.convertToDateTimeFromString(dateTime,today);
         PatientAppointment appointment = new PatientAppointment(patientFirstName,patientLastName,localDateTime,doc);
         appointments.add(appointment);
     }

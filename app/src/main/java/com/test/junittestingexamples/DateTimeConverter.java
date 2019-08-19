@@ -12,7 +12,7 @@ public class DateTimeConverter
         LocalDateTime localDateTime;
         try
         {
-            if(dateTime.toUpperCase().startsWith("today"))
+            if(dateTime.toLowerCase().startsWith("today"))
             {
                 String[] parts = dateTime.split(" ",2);
                 LocalTime time = LocalTime.parse(parts[1].toUpperCase(), DateTimeFormatter.ofPattern("h:mm a", Locale.US));
@@ -24,7 +24,7 @@ public class DateTimeConverter
         }
         catch (Throwable t)
         {
-            throw  new RuntimeException("Unable to create date tine from ["+
+            throw  new RuntimeException("Unable to create date time from ["+
                     dateTime.toUpperCase() + "], please enter with formant [M/d/yyyy h:mm a]");
         }
         return localDateTime;
