@@ -11,6 +11,7 @@ PatientAppointment
     private String patientLastName;
     private LocalDateTime appointmentDateTime;
     private Doctor doctor;
+    private double apptBmi;
 
     public PatientAppointment(
     String patientFirstName,
@@ -74,5 +75,12 @@ PatientAppointment
     Doctor doctor)
     {
         this.doctor = doctor;
+    }
+    public void setBmi(double bmi) {
+        apptBmi = bmi;
+    }
+
+    public double getApptBmi() {
+        return apptBmi;
     }
 }

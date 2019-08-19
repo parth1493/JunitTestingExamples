@@ -30,7 +30,7 @@ class MainActivityTest
         clinicCalendar = new ClinicCalendar(LocalDate.of(2019,8,18));
     }
     @Test
-    @Tag("DateTime")
+    //@Tag("DateTime")
     public void
     allowEntryofAnyAppointment()
     {
@@ -58,7 +58,7 @@ class MainActivityTest
     }
 
     @Test
-    @Tag("DateTime")
+   // @Tag("DateTime")
     public void
     returnFalseForHasAppointmentsIfThereAreAppointments()
     {
